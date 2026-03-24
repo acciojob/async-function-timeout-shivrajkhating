@@ -6,47 +6,29 @@
 </head>
 <body>
 
-  <input type="text" id="text" placeholder="Enter message" />
-  <input type="number" id="delay" placeholder="Enter delay (ms)" />
-  <button id="btn">Submit</button>
+  <!-- ✅ form tag add kiya -->
+  <form>
+    <input type="text" id="text" placeholder="Enter message" />
+    <input type="number" id="delay" placeholder="Enter delay (ms)" />
+    <button id="btn" type="button">Submit</button>
+  </form>
+
   <div id="output"></div>
 
   <script>
-    // Helper function — delay banane ke liye
     function wait(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    // Async function — message display karne ke liye
     async function showMessage() {
       const message = document.getElementById('text').value;
       const delay = Number(document.getElementById('delay').value);
-
-      await wait(delay); // delay tak ruko
-
+      await wait(delay);
       document.getElementById('output').textContent = message;
     }
 
-    // Button click pe showMessage call karo
     document.getElementById('btn').onclick = showMessage;
   </script>
 
 </body>
 </html>
-```
-
----
-
-## Samajhte hain 🧠
-
-**Hindi mein — Real life analogy:**
-
-Socho tumne **microwave mein khaana rakha** 🍕 — timer set kiya, aur jab beep aaya tab khaana nikala. Yahi `async/await` karta hai!
-```
-User clicks btn
-     ↓
-showMessage() shuru hoti hai
-     ↓
-await wait(delay) — "ruko yaar, timer chal raha hai ⏳"
-     ↓
-Timer khatam → output mein message dikhao ✅
